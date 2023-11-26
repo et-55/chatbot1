@@ -1,1 +1,16 @@
 runtime: python311
+
+instance_class: E2  # Tipe instance yang digunakan
+
+automatic_scaling:
+  target_cpu_utilization: 0.65  # Penyesuaian skala otomatis berdasarkan penggunaan CPU
+
+handlers:
+- url: /static
+  static_dir: static  # Direktori statis untuk menyimpan file statis seperti CSS dan gambar
+
+- url: /.*
+  script: auto  # Menentukan bahwa file aplikasi akan dijalankan secara otomatis
+
+env_variables:
+  FLASK_ENV: development  # Mengatur lingkungan Flask menjadi produksi
